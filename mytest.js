@@ -1,12 +1,23 @@
-function swapHeadAndTail(arr) {
-  if (arr.length === 1) {
-    return arr;
+class Rectangle {
+  constructor(width, height) {
+    this.thisWidth = width;
+    this.thisHeight = height;
   }
-  return arr.length % 2 === 0
-    ? arr.splice((arr.length / 2)).concat(arr.splice(-(arr.length / 2), Math.floor(arr.length / 2)))
-    : arr.splice(Math.ceil(arr.length / 2))
-      .concat(arr[Math.floor(arr.length / 2)])
-      .concat(arr.splice(-(Math.ceil(arr.length / 2)) - 1, Math.ceil(arr.length / 2)));
+
+  get width() {
+    return this.thisWidth;
+  }
+
+  get height() {
+    return this.thisHeight;
+  }
+
+  getArea() {
+    return this.thisHeight * this.thisWidth;
+  }
 }
 
-console.log(swapHeadAndTail([1, 2, 3, 4]));
+const r = new Rectangle(10, 20);
+console.log(r.width); // => 10
+console.log(r.height); // => 20
+console.log(r.getArea()); // => 200

@@ -5,7 +5,6 @@
  *                                                                                                *
  ************************************************************************************************ */
 
-
 /**
  * Return Promise object that is resolved with string value === 'Hooray!!! She said "Yes"!',
  * if boolean value === true is passed, resolved with string value === 'Oh no, she said "No".',
@@ -28,10 +27,15 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+async function willYouMarryMe(isPositiveAnswer) {
+  if (isPositiveAnswer === true) {
+    return 'Hooray!!! She said "Yes"!';
+  }
+  if (isPositiveAnswer === false) {
+    return 'Oh no, she said "No".';
+  }
+  throw new Error('Wrong parameter is passed! Ask her again.');
 }
-
 
 /**
  * Return Promise object that should be resolved with array containing plain values.
@@ -48,9 +52,7 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
-}
+const processAllPromises = async (array) => Promise.all(array);
 
 /**
  * Return Promise object that should be resolved with value received from
@@ -71,9 +73,8 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
-}
+
+const getFastestPromise = async (array) => Promise.race(array);
 
 /**
  * Return Promise object that should be resolved with value that is
